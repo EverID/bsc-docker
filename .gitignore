@@ -1,1 +1,6 @@
 storage/*
+everest-genesis-contract/
+node_modules/
+.idea/
+package.json
+package-lock.json
