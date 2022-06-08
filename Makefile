@@ -5,7 +5,6 @@ SHELL:=/usr/bin/env sh
 build-bsc:
 	docker-compose -f docker-compose.bsc.yml build
 
-
 # Build & start simple validator cluster
 
 .PHONY:build-simple
@@ -20,7 +19,7 @@ bootstrap-simple:
 
 .PHONY:start-simple
 start-simple:
-	docker-compose -f docker-compose.simple.yml up -d bsc-rpc bsc-validator1 netstats
+	docker-compose -f docker-compose.simple.yml up -d bsc-rpc bsc-validator1 nginx netstats
 
 .PHONY:run-test-simple
 run-test-simple:
@@ -40,7 +39,7 @@ bootstrap-cluster:
 
 .PHONY:start-cluster
 start-cluster:
-	docker-compose -f docker-compose.cluster.yml up -d cluster-bsc-rpc cluster-bsc-validator1 cluster-bsc-validator2 cluster-bsc-validator3 netstats
+	docker-compose -f docker-compose.cluster.yml up -d cluster-bsc-rpc cluster-bsc-validator1 cluster-bsc-validator2 cluster-bsc-validator3 nginx netstats
 
 .PHONY:run-test-cluster
 run-test-cluster:

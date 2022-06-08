@@ -25,6 +25,15 @@ services:
       - ./scripts:/scripts
     command: ash /scripts/bsc-validator.sh
 
+  nginx:
+    image: nginx:1.16-alpine
+    restart: unless-stopped
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+    ports:
+      - "80:80"
+    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+
   netstats:
     build: ./netstats
     ports:
