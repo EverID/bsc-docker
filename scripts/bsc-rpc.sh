@@ -14,4 +14,6 @@ done
 
 geth --config ${DATA_DIR}/config.toml --datadir ${DATA_DIR} --netrestrict ${CLUSTER_CIDR} \
     --verbosity ${VERBOSE} --nousb --ethstats ${NODE_ID}:${NETSTATS_URL} \
-    -unlock ${unlock_sequences} --password /dev/null --http --http.addr=0.0.0.0 --http.vhosts=* --http.corsdomain=* --http.api=net,web3,eth,debug
+    -unlock ${unlock_sequences} --password /dev/null --http --http.addr=0.0.0.0 --http.vhosts=* --http.corsdomain=* --http.api=net,web3,eth,debug \
+    --ws --ws.addr=0.0.0.0 --ws.api=net,web3,eth,shh,txpool,debug
+
