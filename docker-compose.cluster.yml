@@ -14,6 +14,14 @@ services:
       - ./scripts:/scripts
       - ./config:/config
     command: ash /scripts/bsc-rpc.sh
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 4gb
+        reservations:
+          cpus: '0.25'
+          memory: 1gb
 
   cluster-bsc-validator1:
     image: bsc-geth:docker-local
@@ -25,6 +33,14 @@ services:
       - ./storage/bsc-validator1:/root/.ethereum
       - ./scripts:/scripts
     command: ash /scripts/bsc-validator.sh
+    deploy:
+      resources:
+        limits:
+          cpus: '0.9'
+          memory: 3gb
+        reservations:
+          cpus: '0.25'
+          memory: 1gb
 
   cluster-bsc-validator2:
     image: bsc-geth:docker-local
@@ -36,6 +52,14 @@ services:
       - ./storage/bsc-validator2:/root/.ethereum
       - ./scripts:/scripts
     command: ash /scripts/bsc-validator.sh
+    deploy:
+      resources:
+        limits:
+          cpus: '0.9'
+          memory: 3gb
+        reservations:
+          cpus: '0.25'
+          memory: 1gb
 
   cluster-bsc-validator3:
     image: bsc-geth:docker-local
@@ -47,6 +71,14 @@ services:
       - ./storage/bsc-validator3:/root/.ethereum
       - ./scripts:/scripts
     command: ash /scripts/bsc-validator.sh
+    deploy:
+      resources:
+        limits:
+          cpus: '0.9'
+          memory: 3gb
+        reservations:
+          cpus: '0.25'
+          memory: 1gb
 
   nginx:
     image: nginx:1.16-alpine
@@ -64,6 +96,14 @@ services:
     environment:
       WS_SECRET: bscpwd
     restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: '0.1'
+          memory: 500m
+        reservations:
+          cpus: '0.05'
+          memory: 100m
 
   truffle-test:
     build: ./truffle-test
@@ -75,6 +115,14 @@ services:
     volumes:
       - ./scripts:/scripts
     restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: '0.1'
+          memory: 500m
+        reservations:
+          cpus: '0.05'
+          memory: 100m
 
 networks:
   default:
