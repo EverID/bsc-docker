@@ -15,7 +15,7 @@ services:
       - ./config:/root/config
       - ./init-holders:/root/init-holders
     command: /root/scripts/bootstrap.sh
-    networks: 
+    networks:
       - bootstrap-cluster
 
 networks:

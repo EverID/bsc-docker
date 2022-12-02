@@ -14,6 +14,7 @@ services:
       - ./scripts:/scripts
       - ./config:/config
     command: ash /scripts/bsc-rpc.sh
+    restart: always
     deploy:
       resources:
         limits:
@@ -33,6 +34,7 @@ services:
       - ./storage/bsc-validator1:/root/.ethereum
       - ./scripts:/scripts
     command: ash /scripts/bsc-validator.sh
+    restart: always
     deploy:
       resources:
         limits:
@@ -52,6 +54,7 @@ services:
       - ./storage/bsc-validator2:/root/.ethereum
       - ./scripts:/scripts
     command: ash /scripts/bsc-validator.sh
+    restart: always
     deploy:
       resources:
         limits:
@@ -71,6 +74,7 @@ services:
       - ./storage/bsc-validator3:/root/.ethereum
       - ./scripts:/scripts
     command: ash /scripts/bsc-validator.sh
+    restart: always
     deploy:
       resources:
         limits:
